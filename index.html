@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>  
+  <meta charset="UTF-8">
+  <title>DGKO MEHMET KAYABAŞI</title>
+  <link rel="icon" href="ADK_2049_icon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('background2.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-direction: column;
+      overflow-y: scroll;
+      font-family: 'Alex Brush', cursive;
+    }
+
+    .sarı { color: rgb(235, 224, 102); }
+    .lacivert { color: rgb(9, 33, 142); }
+
+    .scroll-text {
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      font-size: 24px;
+      line-height: 1.8;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.0);
+    }
+
+    video {
+      max-width: 90%;
+      max-height: 60%;
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    .video-container {
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Sinematik overlay */
+    #overlay {
+      position: fixed;
+      
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.95);
+      color: white;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      z-index: 999;
+      text-align: center;
+      font-size: 24px;
+      line-height: 2;
+      overflow-y: auto;
+    }
+    .yas-vurgu {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 48px;
+      color: #ff69b4;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) translateX(-50%); opacity: 1; }
+      50% { transform: scale(1.3) translateX(-50%); opacity: 0.7; }
+      100% { transform: scale(1) translateX(-50%); opacity: 1; }
+    }
+.heart {
+  position: fixed; /* Sayfa kaydırılsa bile kalplerin ekranda doğru yerde çıkmasını sağlar */
+  width: 35px; /* Görselin rahat seçilmesi için boyutu biraz büyütüldü */
+  height: 35px;
+  background-image: url('patlayan.jpg'); 
+  background-size: contain; /* Görseli kutunun içine tam sığdırır */
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: explode 1.5s ease-out forwards;
+  pointer-events: none;
+  z-index: 10000; /* Koyu renkli ekranın (overlay) üstünde görünmesi sağlandı */
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0.5) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4) translateY(-150px) rotate(180deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.8) translateY(-300px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+ 
+    @keyframes float {
+      0% { transform: scale(0.5) translateY(0); opacity: 1; }
+      100% { transform: scale(1.5) translateY(-200px); opacity: 0; }
+    }
+
+    .sinematik-btn {
+      padding: 12px 24px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #000;
+      color: white;
+      cursor: pointer;
+      margin: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+  .close-btn {
+  position: fixed;
+  top: 1%;
+  right: 1px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: 'Alex Brush', cursive;
+  z-index: 1001;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+  </style>
+</head>
+<body>
+
+  <video width="540" height="960" playsinline controls>
+    <source src="Kayabaşı DGKO.mp4" type="video/mp4">
+  </video>
+
+  <div class="scroll-text">
+    <p>
+      <span class="sarı">Doğum günün kutlu olsun</span> <span class="lacivert">Rakip eleyenim</span> 💖<br>
+      <span class="lacivert">TOBBlama kampında hayat</span> <span class="sarı">nasıl güzel mi</span><br>
+      <span class="sarı">Sayfan güzel olmuş mu?</span> 🥰
+    </p>
+  </div>
+
+  <video playsinline controls>
+    <source src="Ünsal.mp4" type="video/mp4">
+  </video>
+  <video playsinline controls>
+    <source src="Derviş.mp4" type="video/mp4">
+  </video>
+  <!-- Sinematik Buton -->
+  <button class="sinematik-btn" onclick="showOverlay()">BAS BAKALIM ZEKİ ÇALIŞKAN</button>
+
+  <!-- Overlay -->
+  <div id="overlay">
+    <audio id="bgMusic" src="Gloria Gaynor - I Will Survive.mp3" loop></audio>
+    <div class="yas-vurgu">🎉 20 YAŞINDA! 🎉</div>
+    <button onclick="hideOverlay()" class="close-btn">✖</button>
+    <p>
+      <span class="sarı">Doğum günün kutlu olsun</span> <span class="lacivert">Kayabaşı'm</span> 💖<br>
+      <span class="lacivert">Senin için</span> <span class="sarı">bu web siteyi yaptık</span><br>
+      <span class="sarı">Umarım beğenirsin</span><br>
+      <span class="lacivert">Mühendislik fakültesinde başarılar dileriz</span><br>
+      <span class="sarı">TOBB da herkesi eleyince bizi unutma</span><br>
+      <span class="lacivert">Dandikkarada kendine iyi bak.</span><br>
+      <span class="sarı">Sevdiklerinle nice mutlu yıllara</span><br>
+      <span class="lacivert">Sevgilerle Ünsal & Derviş</span>
+    </p>
+  </div>
+
+  <script>
+    let heartInterval;
+
+    function showOverlay() {
+      document.getElementById("overlay").style.display = "flex";
+      document.getElementById("bgMusic").play();
+      heartInterval = setInterval(spawnHeart, 500);
+    }
+
+    function hideOverlay() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("bgMusic").pause();
+      clearInterval(heartInterval);
+    }
+
+    function spawnHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  
+  // Ekranın solundan sağına rastgele yüzde (0% - 95% arası) konumlandırır
+  heart.style.left = Math.random() * 95 + '%';
+  
+  // Ekranın yukarısından aşağısına rastgele yüzde (0% - 90% arası) konumlandırır
+  // Piksel (px) yerine yüzde (%) kullanmak kayma sorununu tamamen çözer
+  heart.style.top = Math.random() * 90 + '%';
+  
+  document.body.appendChild(heart);
+  
+  // Animasyon bitince elementi temizler
+  setTimeout(() => {
+    heart.remove();
+  }, 1500); 
+}
+  </script>
+
+</body>
+</html>
